@@ -35,3 +35,32 @@ class UI {
         }
     }
 }
+
+const form = document.querySelector('#myForm');
+const db = [];
+ 
+  
+
+
+form.addEventListener('submit', (e) => {
+const  name = document.querySelector('#user_name').value,
+       email = document.querySelector('#user_email').value,
+       age = document.querySelector('#user_age').value;
+
+const ui = new UI();
+const person = new Person(name, email, age);
+if(name == '' || email == '' || age == ''){
+    alert('sorry');
+}else{
+    db.push({name:name,email:email,age:age});
+    ui.addPersonToList(person);
+    ui.clearFields();
+}
+e.preventDefault();
+});
+
+document.querySelector('#parent_avatars').addEventListener('click', (e) =>{
+const ui = new UI();
+const obj = ui.deletePerson(e.target);
+db.splice(obj,1);
+});
