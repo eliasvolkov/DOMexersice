@@ -5,6 +5,7 @@ class Person {
         this.age = age;
     }
 } 
+
 class UI {
     addPersonToList(person){
         const card = document.createElement('div');
@@ -20,5 +21,17 @@ class UI {
                             </div>
                         `;
         document.querySelector('#parent_avatars').appendChild(card);
-    }   
+    }
+
+    clearFields(){
+        document.querySelector('#user_name').value = '';
+        document.querySelector('#user_email').value = '';
+        document.querySelector('#user_age').value = '';
+    }
+
+    deletePerson(target){
+        if(target.classList.contains('card-delete')){
+            target.parentElement.parentElement.remove();
+        }
+    }
 }
